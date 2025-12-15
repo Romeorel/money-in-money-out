@@ -32,6 +32,12 @@ export default function Dashboard() {
   const income = items.filter(i => i.type === "income").reduce((a, b) => a + b.amount, 0);
   const expense = items.filter(i => i.type === "expense").reduce((a, b) => a + b.amount, 0);
 
+  function removeSubscriptionNow() {
+  if (!confirm("End your subscription now? Access will stop immediately.")) return;
+  localStorage.removeItem("license");
+  location.href = "/pricing";
+}
+
 
   return (
     <main style={{ padding: 30 }}>
